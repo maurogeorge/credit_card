@@ -2,17 +2,6 @@ module CreditCard
   class TypeDiscover
     extend Forwardable
 
-    Type = Struct.new(:name, :length, :number_pattern) do
-
-      def same_length?(length)
-        Array(self.length).include?(length)
-      end
-
-      def matches_number_pattern?(number)
-        number_pattern =~ number
-      end
-    end
-
     VALID_TYPES = [
       Type.new('AMEX', 15, /^(34|37)/),
       Type.new('Discover', 16, /^6011/),

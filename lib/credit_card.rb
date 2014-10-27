@@ -1,4 +1,5 @@
 require "credit_card/version"
+require 'credit_card/type'
 require 'credit_card/type_discover'
 
 module CreditCard
