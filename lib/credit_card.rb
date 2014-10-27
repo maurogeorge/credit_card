@@ -1,7 +1,7 @@
 require "credit_card/version"
+require 'credit_card/type_discover'
 
 module CreditCard
-
   class CreditCard
 
     def initialize(number)
@@ -9,18 +9,7 @@ module CreditCard
     end
 
     def type
-      length = number.size
-      if length == 15 && number =~ /^(34|37)/
-        'AMEX'
-      elsif length == 16 && number =~ /^6011/
-        'Discover'
-      elsif length == 16 && number =~ /^5[1-5]/
-        'MasterCard'
-      elsif (length == 13 || length == 16) && number =~ /^4/
-        'Visa'
-      else
-        'Unknown'
-      end
+      TypeDiscover.new(self).call
     end
 
     private
