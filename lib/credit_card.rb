@@ -1,6 +1,7 @@
 require "credit_card/version"
 require 'credit_card/type'
 require 'credit_card/type_discover'
+require 'credit_card/luhn_validator'
 
 module CreditCard
   class CreditCard
@@ -14,15 +15,7 @@ module CreditCard
     end
 
     def valid?
-      s1 = s2 = 0
-      number.reverse.chars.each_slice(2) do |odd, even|
-        s1 += odd.to_i
-
-        double = even.to_i * 2
-        double -= 9 if double >= 10
-        s2 += double
-      end
-      (s1 + s2) % 10 == 0
+      LuhnValidator.new(self).call
     end
 
     private
