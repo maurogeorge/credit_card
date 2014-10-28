@@ -18,8 +18,16 @@ module CreditCard
       LuhnValidator.new(self).call
     end
 
+    def to_s
+      "#{type}: #{number} (#{valid})"
+    end
+
     private
 
       attr_reader :number
+
+      def valid
+        valid? ? 'valid' : 'invalid'
+      end
   end
 end

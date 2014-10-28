@@ -57,7 +57,7 @@ RSpec.describe CreditCard::CreditCard do
     end
   end
 
-  describe 'valid?' do
+  describe '#valid?' do
 
     context 'when the number is valid' do
 
@@ -75,6 +75,25 @@ RSpec.describe CreditCard::CreditCard do
         it "be false with #{number}" do
           expect(CreditCard::CreditCard.new(number).valid?).to eq(false)
         end
+      end
+    end
+  end
+
+  describe '#to_s' do
+
+    context 'when credit card is valid' do
+
+      it 'shows the type, number and valid status as valid' do
+        number = '378282246310005'
+        expect(CreditCard::CreditCard.new(number).to_s).to eq('AMEX: 378282246310005 (valid)')
+      end
+    end
+
+    context 'when credit card is invalid' do
+
+      it 'shows the type, number and valid status as invalid' do
+        number = '378282246310007'
+        expect(CreditCard::CreditCard.new(number).to_s).to eq('AMEX: 378282246310007 (invalid)')
       end
     end
   end
