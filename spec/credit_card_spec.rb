@@ -56,4 +56,26 @@ RSpec.describe CreditCard::CreditCard do
       end
     end
   end
+
+  describe 'valid?' do
+
+    context 'when the number is valid' do
+
+      %w{4111111111111111 4012888888881881 378282246310005
+      6011111111111117 5105105105105100 79927398713}.each do |number|
+        it "be true with #{number}" do
+          expect(CreditCard::CreditCard.new(number).valid?).to eq(true)
+        end
+      end
+    end
+
+    context 'when the number is invvalid' do
+
+      %w{4111111111111 5105105105105106 9111111111111111}.each do |number|
+        it "be false with #{number}" do
+          expect(CreditCard::CreditCard.new(number).valid?).to eq(false)
+        end
+      end
+    end
+  end
 end
