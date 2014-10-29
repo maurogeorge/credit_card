@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = CreditCard::VERSION
   spec.authors       = ["Mauro George"]
   spec.email         = ["maurogot@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Provides a interface to inquire if an credit card number
+                          is valid or invalid and what is the credit card brand.}
+  spec.homepage      = "https://github.com/maurogeorge/credit_card"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
